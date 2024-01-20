@@ -9,7 +9,7 @@ substitutions:
   device_name: home-assistant-glow
   friendly_name: Home Assistant Glow
   project_version: "4.0.0"
-  device_description: "Measure your energy consumption with the pulse LED on your smart meter - Wemos D1 Mini"
+  device_description: "TEST - Wemos D1 Mini"
 
   # Define the GPIO pins
   pulse_pin: GPIO13
