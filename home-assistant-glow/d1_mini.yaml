@@ -16,6 +16,7 @@ substitutions:
   status_led: GPIO5
   led_pin_red: GPIO2
   led_pin_green: GPIO4
+  photoresistor_pin: A0  # Adjust as needed
 
 esphome:
   name: '${device_name}'
@@ -26,7 +27,7 @@ esphome:
     version: "${project_version}"
 
 dashboard_import:
-  package_import_url: github://klaasnicolaas/home-assistant-glow/home-assistant-glow/esp32.yaml@main
+  package_import_url: github://filip-strelec/home-assistant-glow-forked/home-assistant-glow/esp32.yaml@main
 
 esp8266:
   board: d1_mini
@@ -59,3 +60,22 @@ captive_portal:
 
 # To have a "next url" for improv serial
 web_server:
+
+sensor:
+  # Log the photoresistor value
+  - platform: adc
+    pin: ${photoresistor_pin}
+    name: '${friendly_name} - Photoresistor Value'
+    id: sensor_photoresistor
+    unit_of_measurement: '%'
+    accuracy_decimals: 2
+
+automation:
+  # Log the photoresistor value every minute
+  - id: log_photoresistor_value
+    alias: 'Log Photoresistor Value'
+    trigger:
+      platform: time
+      minutes: '/1'  # Adjust as needed
+    action:
+      - logger.log: "Photoresistor value: {:.2f}%".format(id(sensor_photoresistor).state)
