@@ -9,7 +9,7 @@ substitutions:
   device_name: home-assistant-glow
   friendly_name: Home Assistant Glow
   project_version: "4.0.0"
-  device_description: "Measure your energy consumption with the pulse LED on your smart meter - Wemos D1 Mini"
+  device_description: "TESTING FILIP - Wemos D1 Mini"
 
   # Define the GPIO pins
   pulse_pin: GPIO13
@@ -27,7 +27,7 @@ esphome:
     version: "${project_version}"
 
 dashboard_import:
-  package_import_url: github://filip-strelec/home-assistant-glow-forked/home-assistant-glow/esp32.yaml@main
+  package_import_url: github://filip-strelec/home-assistant-glow-forked/home-assistant-glow/d1_mini.yaml@main
 
 esp8266:
   board: d1_mini
